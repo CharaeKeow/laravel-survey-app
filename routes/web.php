@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
+use App\Http\Controllers\SurveyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,16 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SurveyController::class, 'showHomepage']);
+Route::post('/submit', [SurveyController::class, 'submit']);
 
-Route::get('/homepage', function ()
-{
-    return view('homepage');
-});
-
-Route::get('/results', function ()
-{
-    return view('results');
-});
+Route::get('/results', [SurveyController::class, 'showResults']);
